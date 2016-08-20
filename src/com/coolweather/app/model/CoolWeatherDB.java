@@ -36,7 +36,7 @@ public class CoolWeatherDB {
 	 * 获取CoolWeatherDB的实例
 	 */
 	public synchronized static CoolWeatherDB getInstance(Context context){
-		if (coolWeatherDB != null) {
+		if (coolWeatherDB == null) {
 			coolWeatherDB = new CoolWeatherDB(context);
 		}
 		return coolWeatherDB;
@@ -98,7 +98,9 @@ public class CoolWeatherDB {
 	 * 从数据库读取某省下所有的城市信息
 	 */
 	public List<City> loadCity(int provinceId){
+		
 		List<City> list = new ArrayList<City>();
+		
 		Cursor cursor = db.query("City", null, "province_id = ?", new String[]{String.valueOf(provinceId)}, null, null, null);
 		
 		if (cursor.moveToFirst()) {
@@ -137,7 +139,9 @@ public class CoolWeatherDB {
 	 * 从数据库读取某城市下所有的县信息
 	 */
 	public List<Country> loadCountry(int cityId){
+		
 		List<Country> list = new ArrayList<Country>();
+		
 		Cursor cursor = db.query("Country", null, "city_id = ?", new String[]{String.valueOf(cityId)}, null, null, null);
 		
 		if (cursor.moveToFirst()) {

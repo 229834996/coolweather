@@ -26,7 +26,7 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 	public static final String CREATE_CITY = "create table City("
 			+ "id integer primary key autoincrement,"
 			+ "city_name text,"
-			+ "city_code text"
+			+ "city_code text,"
 			+ "province_id integer)";//关联的Province表外键
 	
 	/**
@@ -36,13 +36,13 @@ public class CoolWeatherOpenHelper extends SQLiteOpenHelper {
 			+ "id integer primary key autoincrement,"
 			+ "country_name text,"
 			+ "country_code text,"
-			+ "city_id integer";//关联的City表外键
+			+ "city_id integer)";//关联的City表外键
 
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL(CREATE_PROVINCE);
 		db.execSQL(CREATE_CITY);
-		db.execSQL(CREATE_CITY);
+		db.execSQL(CREATE_COUNTRY);
 	}
 
 	@Override
